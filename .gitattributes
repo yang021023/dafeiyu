@@ -1,0 +1,23 @@
+# 二进制资源：不要让 git 做换行转换或文本合并
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.psd   binary
+*.ttf   binary
+*.otf   binary
+*.wav   binary
+*.mp3   binary
+*.ogg   binary
+*.unitypackage binary
+
+# Unity 的 YAML 资源：按文本处理，换行统一成 LF
+*.unity      text eol=lf
+*.prefab     text eol=lf
+*.asset      text eol=lf
+*.meta       text eol=lf
+*.controller text eol=lf
+*.anim       text eol=lf
+*.mat        text eol=lf
+
+# C# 源码
+*.cs text eol=lf diff=csharp

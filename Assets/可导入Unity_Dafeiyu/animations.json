@@ -1,0 +1,422 @@
+[
+  {
+    "name": "Collapse",
+    "chinese": "死亡_晕倒过程",
+    "loop": false,
+    "frames": 6,
+    "fps": 6,
+    "durations_ms": [
+      167,
+      167,
+      167,
+      167,
+      167,
+      167
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "KnockedOut",
+    "chinese": "倒地_星星循环",
+    "loop": true,
+    "frames": 12,
+    "fps": 6,
+    "durations_ms": [
+      85,
+      85,
+      85,
+      85,
+      85,
+      85,
+      85,
+      85,
+      85,
+      85,
+      85,
+      85
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "Idle",
+    "chinese": "待机",
+    "loop": true,
+    "frames": 6,
+    "fps": 6,
+    "durations_ms": [
+      167,
+      167,
+      167,
+      167,
+      167,
+      167
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "Walk",
+    "chinese": "走路",
+    "loop": true,
+    "frames": 6,
+    "fps": 8,
+    "durations_ms": [
+      125,
+      125,
+      125,
+      125,
+      125,
+      125
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "Run",
+    "chinese": "跑步",
+    "loop": true,
+    "frames": 6,
+    "fps": 8,
+    "durations_ms": [
+      125,
+      125,
+      125,
+      125,
+      125,
+      125
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "Draw",
+    "chinese": "背后拔鲸鱼",
+    "loop": false,
+    "frames": 6,
+    "fps": 6,
+    "durations_ms": [
+      167,
+      167,
+      167,
+      167,
+      167,
+      167
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "Sheathe",
+    "chinese": "收回鲸鱼",
+    "loop": false,
+    "frames": 6,
+    "fps": 6,
+    "durations_ms": [
+      167,
+      167,
+      167,
+      167,
+      167,
+      167
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "Attack_Sweep",
+    "chinese": "攻击一_横扫",
+    "loop": false,
+    "frames": 6,
+    "fps": 6,
+    "durations_ms": [
+      130,
+      160,
+      70,
+      100,
+      150,
+      180
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "Attack_Slam",
+    "chinese": "攻击二_重砸",
+    "loop": false,
+    "frames": 6,
+    "fps": 6,
+    "durations_ms": [
+      130,
+      160,
+      70,
+      100,
+      150,
+      180
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "Attack_Uppercut",
+    "chinese": "攻击三_上挑",
+    "loop": false,
+    "frames": 6,
+    "fps": 6,
+    "durations_ms": [
+      130,
+      160,
+      70,
+      100,
+      150,
+      180
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "AirAttack",
+    "chinese": "空中攻击",
+    "loop": false,
+    "frames": 6,
+    "fps": 6,
+    "durations_ms": [
+      130,
+      160,
+      70,
+      100,
+      150,
+      180
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "Jump",
+    "chinese": "单跳_起跳",
+    "loop": false,
+    "frames": 6,
+    "fps": 6,
+    "durations_ms": [
+      167,
+      167,
+      167,
+      167,
+      167,
+      167
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "DoubleJump",
+    "chinese": "二段跳",
+    "loop": false,
+    "frames": 6,
+    "fps": 6,
+    "durations_ms": [
+      167,
+      167,
+      167,
+      167,
+      167,
+      167
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "Fall",
+    "chinese": "下落",
+    "loop": true,
+    "frames": 6,
+    "fps": 6,
+    "durations_ms": [
+      167,
+      167,
+      167,
+      167,
+      167,
+      167
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "WallSlide",
+    "chinese": "贴墙滑落",
+    "loop": true,
+    "frames": 6,
+    "fps": 6,
+    "durations_ms": [
+      167,
+      167,
+      167,
+      167,
+      167,
+      167
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "Climb",
+    "chinese": "爬墙",
+    "loop": true,
+    "frames": 6,
+    "fps": 8,
+    "durations_ms": [
+      125,
+      125,
+      125,
+      125,
+      125,
+      125
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "WallJump",
+    "chinese": "蹬墙跳",
+    "loop": false,
+    "frames": 6,
+    "fps": 6,
+    "durations_ms": [
+      167,
+      167,
+      167,
+      167,
+      167,
+      167
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  },
+  {
+    "name": "Heal",
+    "chinese": "吃白米饭治疗",
+    "loop": true,
+    "frames": 6,
+    "fps": 6,
+    "durations_ms": [
+      167,
+      167,
+      167,
+      167,
+      167,
+      167
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot_normalized": [
+      0.5,
+      0.12109375
+    ]
+  }
+]
