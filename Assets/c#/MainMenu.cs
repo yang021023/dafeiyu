@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     // 绑定到“开始游戏”按钮
     public void StartGame()
     {
+        GameState.Clear();
         Time.timeScale = 1f;
 
         if (string.IsNullOrWhiteSpace(firstSceneName))

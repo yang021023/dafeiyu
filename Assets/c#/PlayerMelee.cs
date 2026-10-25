@@ -35,6 +35,7 @@ public class PlayerMelee : MonoBehaviour
         Enemy2D enemy=hit.GetComponentInParent<Enemy2D>();
         if(enemy!=null && hitEnemies.Add(enemy)){
             enemy.TakeDamage(damage,transform.position);
+            CameraShake.Shake(0.05f, 0.18f);
         }
     }
 

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Enemy2D : MonoBehaviour
 {
@@ -11,6 +11,16 @@ public class Enemy2D : MonoBehaviour
     public float detectRange=6f;
     public float moveSpeed=2f;
     public float stopDistance=0.7f;
+
+    private SpriteRenderer spriteRenderer;
+    private Coroutine flashJob;
+
+    [Header("受击闪白")]
+    [Tooltip("闪白强度：1 = 不闪，1.5 = 轻微泛白，2.5 = 明显，6 = 死白")]
+    [SerializeField, Range(1f, 8f)] private float flashStrength = 1.2f;
+
+    [Tooltip("闪白持续时间（秒）")]
+    [SerializeField, Min(0.01f)] private float flashDuration = 0.08f;
 
     [Header("巡逻")]
     [Min(0.1f)]
@@ -26,6 +36,10 @@ public class Enemy2D : MonoBehaviour
     private float knockbackUntil;
     private bool dead;
 
+    // 接触伤害：谁在贴着、有几个碰撞体在贴
+    private PlayerHealth touchTarget;
+    private int touchCount;
+
     [Header("动画")]
     [SerializeField] private Animator animator;
 
@@ -39,6 +53,7 @@ public class Enemy2D : MonoBehaviour
 
 
     private void Awake(){
+        if (spriteRenderer == null) spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         body=GetComponent<Rigidbody2D>();
         body.constraints |=RigidbodyConstraints2D.FreezeRotation;
         health=maxHealth;
@@ -120,6 +135,7 @@ public class Enemy2D : MonoBehaviour
         if(damage <= 0 || dead) return;
 
         health -=damage;
+        Flash();
         Debug.Log($"怪物生命:{health}/{maxHealth}",this);
 
         if(health<=0){
@@ -133,26 +149,58 @@ public class Enemy2D : MonoBehaviour
         body.linearVelocity=new Vector2(direction*knockbackSpeed,body.linearVelocity.y);
     }
 
+    // ==================== 接触伤害 ====================
+
     private void OnCollisionEnter2D(Collision2D collision){
-        DamagePlayer(collision.collider);
+        Touch(collision.collider, true);
     }
 
-    private void OnCollisionStay2D(Collision2D collision){
-        DamagePlayer(collision.collider);
+    private void OnCollisionExit2D(Collision2D collision){
+        Touch(collision.collider, false);
     }
 
-    // 子物体的伤害触发器共用根物体 Rigidbody2D，事件会传到这里。
+    // contactDamage 子物体的触发器，事件会传到根物体的这里
     private void OnTriggerEnter2D(Collider2D other){
-        DamagePlayer(other);
+        Touch(other, true);
     }
 
-    private void OnTriggerStay2D(Collider2D other){
-        DamagePlayer(other);
+    private void OnTriggerExit2D(Collider2D other){
+        Touch(other, false);
     }
 
-    private void DamagePlayer(Collider2D other){
-        if(dead) return;
+    // 记录"谁在贴着、有几个碰撞体在贴"
+    private void Touch(Collider2D other, bool entering){
         PlayerHealth target=other.GetComponentInParent<PlayerHealth>();
-        if(target!=null) target.TakeDamage(contactDamage);
+        if(target==null) return;
+
+        if(entering){
+            touchCount++;
+            touchTarget=target;
+        } else {
+            touchCount=Mathf.Max(0,touchCount-1);
+            if(touchCount==0) touchTarget=null;
+        }
+    }
+
+    // 只要还贴着就每帧尝试扣血；真正掉几次由玩家自己的无敌时间决定
+    private void Update(){
+        if(Time.timeScale<=0f) return;   // 暂停时不掉血
+        if(dead || touchCount<=0 || touchTarget==null) return;
+
+        touchTarget.TakeDamage(contactDamage,transform.position);
+    }
+
+    private void Flash(){
+        if(spriteRenderer == null) return;
+        if(flashJob != null) StopCoroutine(flashJob);
+        flashJob = StartCoroutine(FlashRoutine());
+    }
+
+    private IEnumerator FlashRoutine(){
+        Color original = spriteRenderer.color;
+        // 用 Inspector 里的强度，不再写死 6 倍
+        spriteRenderer.color = new Color(flashStrength, flashStrength, flashStrength, original.a);
+        yield return new WaitForSecondsRealtime(flashDuration);
+        spriteRenderer.color = original;
     }
 }

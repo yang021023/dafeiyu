@@ -62,7 +62,7 @@ public class DafeiyuMovement : MonoBehaviour
     private float wallJumpControlUntil = float.NegativeInfinity;
     private int wallJumpAwaySide;
 
-
+    private float stunnedUntil;
 
 
     private  int climbInput;
@@ -301,7 +301,7 @@ public class DafeiyuMovement : MonoBehaviour
 
     private void StepMotor(float dt, float now)
     {
-        if(TryClimb(now)) return;
+        if(TryClimb(now) &&now >= stunnedUntil) return;
         Vector2 velocity = body.linearVelocity;
         bool wasGrounded = grounded;
         grounded = now >= ignoreGroundUntil && velocity.y <= 0.1f && CheckGround();
@@ -319,7 +319,9 @@ public class DafeiyuMovement : MonoBehaviour
                                 now < wallJumpControlUntil &&
                                 moveInput != wallJumpAwaySide;
 
-        if (!preserveWallJump)
+        bool stunned=now<stunnedUntil;
+
+        if (!preserveWallJump && !stunned)
         {
             float targetSpeed =
                 moveInput * (slowWalk ? walkSpeed : runSpeed);
@@ -607,6 +609,12 @@ public class DafeiyuMovement : MonoBehaviour
         if (movementMaterial == null) return;
         if (Application.isPlaying) Destroy(movementMaterial);
         else DestroyImmediate(movementMaterial);
+    }
+
+    public void ApplyKnockback(Vector2 sourcePosition,float speed, float stunTime){
+        int dir = transform.position.x>=sourcePosition.x?1:-1;
+        stunnedUntil = Time.time + stunTime;
+        body.linearVelocity=new Vector2(dir * speed,body.linearVelocity.y);
     }
 }
 
