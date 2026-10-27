@@ -49,4 +49,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale=1f;                 // 先恢复时间，否则菜单场景是冻结的
         SceneManager.LoadScene(menuSceneName);
     }
+
+    // 绑定到暂停面板的「保存游戏」按钮
+    public void SaveGame(){
+        string scene = SceneManager.GetActiveScene().name;
+        SaveSystem.Save(GameState.Snapshot(scene));
+    }
 }

@@ -30,6 +30,9 @@ public class SceneExit : MonoBehaviour
 
         loading = true;
 
+        // 切场景前自动存档：记"即将进入的场景"，读档直接回到新房间
+        SaveSystem.Save(GameState.Snapshot(targetScene));
+
         SceneEntry.PendingScene=targetScene;
         SceneEntry.PendingEntryId=targetEntryId;
 
