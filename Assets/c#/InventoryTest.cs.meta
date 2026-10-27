@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 2baab820072ebc042a558802a9189056
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - potion: {instanceID: 0}
+  - key: {instanceID: 0}
+  - sword: {fileID: 11400000, guid: 6488d8519801468ab34fb0a043ae8e68, type: 2}
+  - armor: {fileID: 11400000, guid: 23f2350bcf0d481d8c2f40360423d3e7, type: 2}
+  - boots: {fileID: 11400000, guid: be2984c500c945d29c8845ba1401fa88, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

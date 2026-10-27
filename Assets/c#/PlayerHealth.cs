@@ -75,6 +75,11 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log($"玩家回血:{CurrentHealth}/{maxHealth}",this);
     }
 
+    // 最大血量变小后（比如卸下加血装备）调用：当前血不能超过上限
+    public void ClampToMax(){
+        SetHealth(Mathf.Min(CurrentHealth, maxHealth));
+    }
+
     // 直接死亡：掉出地图、被陷阱秒杀都走这里
     public void Die(){
         if(deathHandled) return;

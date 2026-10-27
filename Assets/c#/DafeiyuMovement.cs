@@ -123,7 +123,14 @@ public class DafeiyuMovement : MonoBehaviour
     public bool IsAttackActive => isAttacking &&
         AttackProgress >= attackActiveStart && AttackProgress <= attackActiveEnd;
     private float AttackProgress => Mathf.Clamp01((Time.time - attackStartedAt) / attackDuration);
+    [SerializeField, Min(0.1f)] private float speedMultiplier = 1f;
 
+    public float SpeedMultiplier
+    {
+    get => speedMultiplier;
+    set => speedMultiplier = Mathf.Max(0.1f, value);
+    }
+    
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -323,9 +330,7 @@ public class DafeiyuMovement : MonoBehaviour
 
         if (!preserveWallJump && !stunned)
         {
-            float targetSpeed =
-                moveInput * (slowWalk ? walkSpeed : runSpeed);
-
+            float targetSpeed = moveInput * (slowWalk ? walkSpeed : runSpeed) * speedMultiplier;
             float acceleration =
                 grounded ? groundAcceleration : airAcceleration;
 
